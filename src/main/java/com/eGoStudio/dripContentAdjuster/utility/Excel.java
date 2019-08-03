@@ -1,0 +1,162 @@
+package com.eGoStudio.dripContentAdjuster.utility;
+
+import com.eGoStudio.dripContentAdjuster.entity.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
+public class Excel {
+    public boolean createExcel(List<Sheet> sheets) {
+        XSSFWorkbook excelWorkBook = new XSSFWorkbook();
+        XSSFSheet excelSheet = excelWorkBook.createSheet("Sheet1");
+        if (sheets.size() > 0) {
+            XSSFRow excelRow = excelSheet.createRow(0);
+            XSSFCell excelCell = excelRow.createCell(0);
+            excelCell.setCellValue("ACTION");
+            excelCell = excelRow.createCell(1);
+            excelCell.setCellValue("TYPE");
+            excelCell = excelRow.createCell(2);
+            excelCell.setCellValue("DISC NUMBER");
+            excelCell = excelRow.createCell(3);
+            excelCell.setCellValue("SEQ");
+            excelCell = excelRow.createCell(4);
+            excelCell.setCellValue("TITLE");
+            excelCell = excelRow.createCell(5);
+            excelCell.setCellValue("ARTIST");
+            excelCell = excelRow.createCell(6);
+            excelCell.setCellValue("LANGUAGE");
+            excelCell = excelRow.createCell(7);
+            excelCell.setCellValue("UPC/ISRC");
+            excelCell = excelRow.createCell(8);
+            excelCell.setCellValue("RELEASE_DATE");
+            excelCell = excelRow.createCell(9);
+            excelCell.setCellValue("RELEASE LANGUAGE");
+            excelCell = excelRow.createCell(10);
+            excelCell.setCellValue("EXPLICIT");
+            excelCell = excelRow.createCell(11);
+            excelCell.setCellValue("STREAM");
+            excelCell = excelRow.createCell(12);
+            excelCell.setCellValue("TERRITORY");
+            excelCell = excelRow.createCell(13);
+            excelCell.setCellValue("GENRE");
+            excelCell = excelRow.createCell(14);
+            excelCell.setCellValue("SUB_GENRE");
+            excelCell = excelRow.createCell(15);
+            excelCell.setCellValue("MEDIA_TYPE");
+            excelCell = excelRow.createCell(16);
+            excelCell.setCellValue("LABEL");
+            excelCell = excelRow.createCell(17);
+            excelCell.setCellValue("COPYRIGHT");
+            excelCell = excelRow.createCell(18);
+            excelCell.setCellValue("DELIVERED_BY");
+            excelCell = excelRow.createCell(19);
+            excelCell.setCellValue("TITLE2");
+            excelCell = excelRow.createCell(20);
+            excelCell.setCellValue("ARTIST2");
+            excelCell = excelRow.createCell(21);
+            excelCell.setCellValue("LANGUAGE2");
+            excelCell = excelRow.createCell(22);
+            excelCell.setCellValue("TITLE3");
+            excelCell = excelRow.createCell(23);
+            excelCell.setCellValue("ARTIST3");
+            excelCell = excelRow.createCell(24);
+            excelCell.setCellValue("LANGUAGE3");
+            int rowNumber = 1;
+            for (Sheet sheet : sheets) {
+                excelRow = excelSheet.createRow(rowNumber++);
+                excelCell = excelRow.createCell(0);
+                excelCell.setCellValue(sheet.getAction());
+                excelCell = excelRow.createCell(1);
+                excelCell.setCellValue(sheet.getType());
+                excelCell = excelRow.createCell(2);
+                excelCell.setCellValue(sheet.getDiscNumber());
+                excelCell = excelRow.createCell(3);
+                excelCell.setCellValue(sheet.getSeq());
+                excelCell = excelRow.createCell(4);
+                excelCell.setCellValue(sheet.getTitle());
+                excelCell = excelRow.createCell(5);
+                excelCell.setCellValue(sheet.getArtist());
+                excelCell = excelRow.createCell(6);
+                excelCell.setCellValue(sheet.getLanguage());
+                excelCell = excelRow.createCell(7);
+                excelCell.setCellValue(sheet.getUpcISRC());
+                excelCell = excelRow.createCell(8);
+                excelCell.setCellValue(sheet.getReleaseDate());
+                excelCell = excelRow.createCell(9);
+                excelCell.setCellValue(sheet.getReleaseLanguage());
+                excelCell = excelRow.createCell(10);
+                excelCell.setCellValue(sheet.getExplicit());
+                excelCell = excelRow.createCell(11);
+                excelCell.setCellValue(sheet.getStream());
+                excelCell = excelRow.createCell(12);
+                excelCell.setCellValue(sheet.getTerritory());
+                excelCell = excelRow.createCell(13);
+                excelCell.setCellValue(sheet.getGenre());
+                excelCell = excelRow.createCell(14);
+                excelCell.setCellValue(sheet.getSubGenre());
+                excelCell = excelRow.createCell(15);
+                excelCell.setCellValue(sheet.getMediaType());
+                excelCell = excelRow.createCell(16);
+                excelCell.setCellValue(sheet.getLabel());
+                excelCell = excelRow.createCell(17);
+                excelCell.setCellValue(sheet.getCopyright());
+                excelCell = excelRow.createCell(18);
+                excelCell.setCellValue(sheet.getDeliveredBy());
+                excelCell = excelRow.createCell(19);
+                excelCell.setCellValue(sheet.getTitle2());
+                excelCell = excelRow.createCell(20);
+                excelCell.setCellValue(sheet.getArtist2());
+                excelCell = excelRow.createCell(21);
+                excelCell.setCellValue(sheet.getLanguage2());
+                excelCell = excelRow.createCell(22);
+                excelCell.setCellValue(sheet.getTitle3());
+                excelCell = excelRow.createCell(23);
+                excelCell.setCellValue(sheet.getArtist3());
+                excelCell = excelRow.createCell(24);
+                excelCell.setCellValue(sheet.getLanguage3());
+            }
+            excelSheet.autoSizeColumn(0);
+            excelSheet.autoSizeColumn(1);
+            excelSheet.autoSizeColumn(2);
+            excelSheet.autoSizeColumn(3);
+            excelSheet.autoSizeColumn(4);
+            excelSheet.autoSizeColumn(5);
+            excelSheet.autoSizeColumn(6);
+            excelSheet.autoSizeColumn(7);
+            excelSheet.autoSizeColumn(8);
+            excelSheet.autoSizeColumn(9);
+            excelSheet.autoSizeColumn(10);
+            excelSheet.autoSizeColumn(11);
+            excelSheet.autoSizeColumn(12);
+            excelSheet.autoSizeColumn(13);
+            excelSheet.autoSizeColumn(14);
+            excelSheet.autoSizeColumn(15);
+            excelSheet.autoSizeColumn(16);
+            excelSheet.autoSizeColumn(17);
+            excelSheet.autoSizeColumn(18);
+            excelSheet.autoSizeColumn(19);
+            excelSheet.autoSizeColumn(20);
+            excelSheet.autoSizeColumn(21);
+            excelSheet.autoSizeColumn(22);
+            excelSheet.autoSizeColumn(23);
+            excelSheet.autoSizeColumn(24);
+        }
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(sheets.get(0).getFolder() + "\\" + sheets.get(0).getUpcISRC() + ".xlsx");
+            excelWorkBook.write(fileOutputStream);
+            excelWorkBook.close();
+            fileOutputStream.close();
+            return true;
+        } catch (FileNotFoundException e) {
+            return false;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+}
